@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Items CRUD</title>
+</head>
+<body>
+  <h2>Items (Inventory)</h2>
+  <form method="GET" action="/items">
+    <input type="text" name="q" placeholder="Search by name" value="<%= q %>"/>
+    <button type="submit">Search</button>
+  </form>
+  <form method="POST" action="/items">
+    <input type="text" name="name" placeholder="New item name" required/>
+    <button type="submit">Add Item</button>
+  </form>
+  <ul>
+    <% items.forEach(item => { %>
+      <li>
+        <%= item.name %> 
+        <form style="display:inline" method="POST" action="/items/delete/<%= item._id %>">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/">Back to Home</a>
+</body>
+</html>
